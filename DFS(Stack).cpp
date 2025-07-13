@@ -48,6 +48,4 @@ int main()
     }
 
     dfs(v);
-
-    return 0;
 }
