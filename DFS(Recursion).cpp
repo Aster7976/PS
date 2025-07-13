@@ -2,14 +2,18 @@
 
 using namespace std;
 
-void dfs(int start, vector<vector<int>> graph, vector<bool> visited)
+vector<vector<int>> graph;
+vector<bool> visited;
+
+void dfs(int start)
 {
     visited[start] = true;
     cout << start << ' ';
+
     for(int next : graph[start])
     {
         if(visited[next] == false)
-            dfs(next, graph, visited);
+            dfs(next);
     }
 }
 
@@ -22,8 +26,8 @@ int main()
     int a, b;
     cin >> n >> m >> v;
 
-    vector<vector<int>> graph(n + 1);
-    vector<bool> visited(n);
+    graph.resize(n + 1);
+    visited.resize(n + 1);
 
     for(int i = 0; i < m; i++)
     {
@@ -32,5 +36,5 @@ int main()
         graph[b].push_back(a);
     }
 
-    dfs(v, graph, visited);
+    dfs(v);
 }
