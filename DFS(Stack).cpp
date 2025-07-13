@@ -9,22 +9,20 @@ void dfs(int start)
 {
     stack<int> s;
     s.push(start);
+    visited[start] = true;
 
     while(s.empty() == false)
     {
         int temp = s.top();
         s.pop();
+        cout << temp << ' ';
 
-        if(visited[temp] == false)
+        for(int next : graph[temp])
         {
-            visited[temp] = true;
-            cout << temp << " ";
-
-            for(int i = graph[temp].size() - 1; i >=0; i--)
+            if(!visited[next])
             {
-                int next = graph[temp][i];
-                if(visited[next] == 0)
-                    s.push(next);
+                s.push(next);
+                visited[next] = true;
             }
         }
     }
