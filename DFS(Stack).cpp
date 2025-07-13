@@ -11,7 +11,7 @@ void dfs(int start)
     s.push(start);
     visited[start] = true;
 
-    while(s.empty() == false)
+    while(!s.empty())
     {
         int temp = s.top();
         s.pop();
