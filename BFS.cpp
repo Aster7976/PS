@@ -17,12 +17,12 @@ void bfs(int start)
         q.pop();
         cout << temp << ' ';
 
-        for(int i : graph[temp])
+        for(int next : graph[temp])
         {
-            if(!visited[i])
+            if(!visited[next])
             {
-                q.push(i);
-                visited[i] = true;
+                q.push(next);
+                visited[next] = true;
             }
         }
     }
