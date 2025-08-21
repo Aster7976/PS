@@ -1,11 +1,17 @@
+// BOJ 1753
+
 #include <bits/stdc++.h>
 
-using namespace std;
+using namespace std;  
+
+#define X first
+#define Y second
+
+const int INF = 1e9;
 
 int v, e, start;
 vector<pair<int, int>> adj[20001];
-const int inf = 1e9;
-int d[20001];
+vector<int> dist(20001, INF);
 
 int main()
 {
@@ -13,39 +19,44 @@ int main()
     cin.tie(0);
 
     cin >> v >> e >> start;
-    fill(d, d + v + 1, inf);
-    for(int i = 0; i < e; i++)
+
+    while(e--)
     {
         int u, v, w;
         cin >> u >> v >> w;
         adj[u].push_back({w, v});
     }
 
-    priority_queue<pair<int, int>, 
-    vector<pair<int, int>>, 
+    priority_queue<pair<int, int>,
+    vector<pair<int, int>>,
     greater<pair<int, int>>> pq;
-    d[start] = 0;
 
-    pq.push({d[start], start});
+    dist[start] = 0;
+    pq.push({dist[start], start});
+
     while(!pq.empty())
     {
-        auto temp = pq.top();
+        auto cur = pq.top();
         pq.pop();
-        if(d[temp.second] != temp.first)
+
+        if(dist[cur.Y] != cur.X)
             continue;
-        for(auto next : adj[temp.second])
+
+        for(auto next : adj[cur.Y])
         {
-            if(d[next.second] <= d[temp.second] + next.first)
+            if(dist[next.Y] <= dist[cur.Y] + next.X)
                 continue;
-            d[next.second] = d[temp.second] + next.first;
-            pq.push({d[next.second], next.second});
+            
+            dist[next.Y] = dist[cur.Y] + next.X;
+            pq.push({dist[next.Y], next.Y});
         }
     }
+
     for(int i = 1; i <= v; i++)
     {
-        if(d[i] == inf)
+        if(dist[i] == INF)
             cout << "INF\n";
         else
-            cout << d[i] << '\n';
+            cout << dist[i] << '\n';
     }
 }
