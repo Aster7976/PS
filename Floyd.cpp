@@ -1,4 +1,4 @@
-//BOJ 11404
+// BOJ 11404
 
 #include <bits/stdc++.h>
 
@@ -55,4 +55,5 @@ int main()
         cout << '\n';
     }
 }
+
 
