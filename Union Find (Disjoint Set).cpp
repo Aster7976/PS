@@ -10,8 +10,8 @@ int find(int x)
 {
     if(p[x] < 0)
         return x;
-    p[x] = find(p[x]);
-    return find(p[x]);
+    
+    return p[x] = find(p[x]);
 }
 
 bool uni(int u, int v)
