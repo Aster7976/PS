@@ -57,7 +57,7 @@ int main()
 
     v = vector<long long>(n);
     int h = int(ceil(log2(n)));
-    int size = pow(1 << (h + 1));
+    int size = 1 << (h + 1);
     tree = vector<long long>(size);
 
     for(int i = 0; i < n; i++)
