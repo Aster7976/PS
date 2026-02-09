@@ -1,10 +1,11 @@
 // BOJ 1753
 
-// O(E log E)
-
 #include <bits/stdc++.h>
 
-using namespace std;
+using namespace std;  
+
+#define F first
+#define S second
 
 const int INF = 1e9;
 
@@ -37,19 +38,19 @@ int main()
     {
         auto cur = pq.top();
         pq.pop();
-        // first 거리
-        // second 정점 번호
 
-        if(dist[cur.second] != cur.first)
+        // F 거리, S 정점 번호
+
+        if(dist[cur.S] != cur.F)
             continue;
 
-        for(auto next : adj[cur.second])
+        for(auto next : adj[cur.S])
         {
-            if(dist[next.second] <= dist[cur.second] + next.first)
+            if(dist[next.S] <= dist[cur.S] + next.F)
                 continue;
 
-            dist[next.second] = dist[cur.second] + next.first;
-            pq.push({dist[next.second], next.second});
+            dist[next.S] = dist[cur.S] + next.F;
+            pq.push({dist[next.S], next.S});
         }
     }
 
