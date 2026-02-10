@@ -10,13 +10,14 @@ vector<long long> tree;
 void init(int node, int start, int end)
 {
     if(start == end)
+	{
         tree[node] = v[start];
-    else
-    {
-        init(node * 2, start, (start + end) / 2);
-        init(node * 2 + 1, (start + end) / 2 + 1, end);
-        tree[node] = tree[node * 2] + tree[node * 2 + 1];
-    }
+		return;
+	}
+	
+	init(node * 2, start, (start + end) / 2);
+	init(node * 2 + 1, (start + end) / 2 + 1, end);
+	tree[node] = tree[node * 2] + tree[node * 2 + 1];
 }
 
 long long query(int node, int start, int end, int left, int right)
@@ -55,10 +56,10 @@ int main()
     int n, m, k;
     cin >> n >> m >> k;
 
-    v = vector<long long>(n);
-    int h = int(ceil(log2(n)));
-    int size = 1 << (h + 1);
-    tree = vector<long long>(size);
+    v.resize(n);
+    int h = (int)ceil(log2(n));
+    int s = 1 << (h + 1);
+    tree.resize(s);
 
     for(int i = 0; i < n; i++)
         cin >> v[i];
