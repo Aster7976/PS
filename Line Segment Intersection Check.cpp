@@ -1,4 +1,4 @@
-// BOJ 17386
+// BOJ 17387
 
 #include <bits/stdc++.h>
 
