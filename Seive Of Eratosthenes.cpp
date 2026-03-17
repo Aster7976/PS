@@ -11,16 +11,12 @@ using ld = long double;
 
 const int C = 1000001;
 
-bool prime[C];
-
-void init()
-{
-    for(int i = 2; i < C; i++)
-        prime[i] = true;
-}
+vector<char> prime(C, true);
 
 void seive()
 {
+    prime[1] = false;
+
     for(int i = 2; i * i < C; i++)
     {
         if(prime[i])
@@ -36,7 +32,6 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    init();
     seive();
 
     int m, n;
