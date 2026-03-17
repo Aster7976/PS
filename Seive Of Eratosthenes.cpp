@@ -12,7 +12,6 @@ using ld = long double;
 const int C = 1000001;
 
 bool prime[C];
-vector<int> v;
 
 void init()
 {
