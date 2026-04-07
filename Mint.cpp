@@ -1,3 +1,17 @@
+// BOJ 10869
+
+#include <bits/stdc++.h>
+
+using namespace std; 
+using ll = long long;
+using ld = long double;
+using pll = pair<ll, ll>;
+
+#define F first
+#define S second
+
+const ll INF = 2e18;
+
 template <ll MOD>
 class Mint {
 public:
@@ -94,3 +108,24 @@ public:
 };
 
 using mint = Mint<998244353>;
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll a, b;
+    cin >> a >> b;
+
+    mint c = a + 998244353;
+    mint d = b + 998244353;
+
+    cout << c + d << '\n';
+    if(a < b)
+        cout << a - b << '\n';
+    else
+        cout << c - d << '\n';
+    cout << c * d << '\n';
+    cout << a / b << '\n';
+    cout << a % b << '\n';
+}
