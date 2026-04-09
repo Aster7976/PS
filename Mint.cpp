@@ -19,7 +19,7 @@ public:
 
     Mint() : v(0) {}
 
-    template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+    template <typename T>
     Mint(T x) {
         v = (ll)(x % MOD);
         if (v < 0) v += MOD;
@@ -45,7 +45,7 @@ public:
         return *this;
     }
     Mint& operator*=(const Mint& o) {
-        v = (__int128)v * o.v % MOD;
+        v = v * o.v % MOD;
         return *this;
     }
     Mint& operator/=(const Mint& o) {
@@ -97,13 +97,13 @@ public:
         return is;
     }
 
-    template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+    template <typename T>
     friend Mint operator+(T l, const Mint& r) { return Mint(l) + r; }
-    template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+    template <typename T>
     friend Mint operator-(T l, const Mint& r) { return Mint(l) - r; }
-    template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+    template <typename T>
     friend Mint operator*(T l, const Mint& r) { return Mint(l) * r; }
-    template <typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+    template <typename T>
     friend Mint operator/(T l, const Mint& r) { return Mint(l) / r; }
 };
 
@@ -117,14 +117,14 @@ int main()
     ll a, b;
     cin >> a >> b;
 
-    mint c = a + 998244353;
-    mint d = b + 998244353;
+    mint c = a;
+    mint d = b;
+
+    c += 998244353;
+    d += 998244353;
 
     cout << c + d << '\n';
-    if(a < b)
-        cout << a - b << '\n';
-    else
-        cout << c - d << '\n';
+    cout << a - b << '\n';
     cout << c * d << '\n';
     cout << a / b << '\n';
     cout << a % b << '\n';
