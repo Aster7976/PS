@@ -1,17 +1,4 @@
-// BOJ 1708
-
-#include <bits/stdc++.h>
-
-using namespace std; 
-using ll = long long;
-using ld = long double;
-
-#define F first
-#define S second
-
-vector<pair<ll, ll>> p;
-
-int ccw(pair<ll, ll> a, pair<ll, ll> b, pair<ll, ll> c)
+int ccw(pll a, pll b, pll c)
 {
     ll cp = (b.F - a.F) * (c.S - a.S)
     - (b.S - a.S) * (c.F - a.F);
@@ -24,13 +11,13 @@ int ccw(pair<ll, ll> a, pair<ll, ll> b, pair<ll, ll> c)
         return 0;
 }
 
-ll dist(pair<ll, ll> a, pair<ll, ll> b)
+ll dist(pll a, pll b)
 {
     return (a.F - b.F) * (a.F - b.F)
     + (a.S - b.S) * (a.S - b.S);
 }
 
-bool cmp(pair<ll, ll> a, pair<ll, ll> b)
+bool cmp(pll a, pll b)
 {
     int c = ccw(p[0], a, b);
 
@@ -40,20 +27,8 @@ bool cmp(pair<ll, ll> a, pair<ll, ll> b)
     return c > 0;
 }
 
-int main()
+void convex_hull()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    int n;
-    cin >> n;
-
-    p.resize(n);
-    vector<int> st(n);
-
-    for(int i = 0; i < n; i++)
-        cin >> p[i].F >> p[i].S;
-
     sort(p.begin(), p.end());
     sort(p.begin() + 1, p.end(), cmp);
 
@@ -69,6 +44,4 @@ int main()
         st[top] = i;
         top++;
     }
-
-    cout << top;
 }
