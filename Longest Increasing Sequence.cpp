@@ -1,21 +1,12 @@
-//BOJ 12738
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int main()
+void lis()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    vector<int> v;
-    int n;
+    vector<ll> v;
+    ll n;
     cin >> n;
 
-    for(int i = 0; i < n; i++)
+    for(ll i = 0; i < n; i++)
     {
-        int x;
+        ll x;
         cin >> x;
 
         if(i == 0)
@@ -28,7 +19,7 @@ int main()
             v.push_back(x);
         else
         {
-            int idx = lower_bound(v.begin(), v.end(), x) - v.begin();
+            ll idx = lower_bound(v.begin(), v.end(), x) - v.begin();
             v[idx] = x;
         }
     } 
