@@ -1,12 +1,10 @@
-int v, e, start;
-vector<pair<int, int>> adj[20001];
-vector<int> dist(20001, INF);
+ll start;
+vector<pll> adj[20001];
+vector<ll> dist(20001, INF);
 
 void dijkstra()
 {
-    priority_queue<pair<int, int>,
-    vector<pair<int, int>>,
-    greater<pair<int, int>>> pq;
+    priority_queue<pll, vector<pll>, greater<pll>> pq;
 
     dist[start] = 0;
     pq.push({dist[start], start});
