@@ -1,4 +1,7 @@
-int ccw(pll a, pll b, pll c)
+ll n;
+vector<pll> p(n);
+
+ll ccw(pll a, pll b, pll c)
 {
     ll cp = (b.F - a.F) * (c.S - a.S)
     - (b.S - a.S) * (c.F - a.F);
@@ -19,7 +22,7 @@ ll dist(pll a, pll b)
 
 bool cmp(pll a, pll b)
 {
-    int c = ccw(p[0], a, b);
+    ll c = ccw(p[0], a, b);
 
     if(c == 0)
         return dist(p[0], a) < dist(p[0], b);
@@ -32,11 +35,12 @@ void convex_hull()
     sort(p.begin(), p.end());
     sort(p.begin() + 1, p.end(), cmp);
 
+    vector<ll> st(n);
     st[0] = 0;
     st[1] = 1;
-    int top = 2;
+    ll top = 2;
 
-    for(int i = 2; i < n; i++)
+    for(ll i = 2; i < n; i++)
     {
         while(top >= 2 && ccw(p[st[top - 2]], p[st[top - 1]], p[i]) <= 0)
             top--;
