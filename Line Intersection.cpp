@@ -1,17 +1,6 @@
-// BOJ 17387
+vector<pll> p(5);
 
-#include <bits/stdc++.h>
-
-using namespace std; 
-using ll = long long;
-using ld = long double;
-
-#define F first
-#define S second
-
-vector<pair<ll, ll>> p(5);
-
-int ccw(pair<ll, ll> a, pair<ll, ll> b, pair<ll, ll> c)
+ll ccw(pll a, pll b, pll c)
 {
     ll cp = (b.F - a.F) * (c.S - a.S)
     - (b.S - a.S) * (c.F - a.F);
@@ -24,16 +13,10 @@ int ccw(pair<ll, ll> a, pair<ll, ll> b, pair<ll, ll> c)
         return 0;
 }
 
-int main()
+void line_intersection()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    for(int i = 1; i <= 4; i++)
-        cin >> p[i].F >> p[i].S;
-
-    int c1 = ccw(p[1], p[2], p[3]) * ccw(p[1], p[2], p[4]);
-    int c2 = ccw(p[3], p[4], p[1]) * ccw(p[3], p[4], p[2]);
+    ll c1 = ccw(p[1], p[2], p[3]) * ccw(p[1], p[2], p[4]);
+    ll c2 = ccw(p[3], p[4], p[1]) * ccw(p[3], p[4], p[2]);
 
     if(c1 == 0 && c2 == 0)
     {
