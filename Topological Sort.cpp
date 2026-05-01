@@ -1,11 +1,11 @@
-vector<int> adj[32001];
-vector<int> indegree(32001);
-queue<int> q;
+ll n;
+vector<ll> adj[32001];
+vector<ll> indegree(32001);
+queue<ll> q;
 
 void ts()
 {
-
-    for(int i = 1; i <= n; i++)
+    for(ll i = 1; i <= n; i++)
     {
         if(indegree[i] == 0)
             q.push(i);
@@ -13,11 +13,11 @@ void ts()
 
     while(!q.empty())
     {
-        int cur = q.front();
+        ll cur = q.front();
         q.pop();
         cout << cur << ' ';
 
-        for(int next : adj[cur])
+        for(ll next : adj[cur])
         {
             indegree[next]--;
             if(indegree[next] == 0)
