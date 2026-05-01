@@ -1,6 +1,6 @@
-ll start;
-vector<pll> adj[20001];
-vector<ll> dist(20001, INF);
+ll n, start;
+vector<pll> adj[n];
+vector<ll> dist(n, INF);
 
 void dijkstra()
 {
