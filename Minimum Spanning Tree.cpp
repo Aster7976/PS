@@ -1,6 +1,6 @@
-ll v, e;
-tuple<ll, ll, ll> edge[100001];
-vector<ll> p(10001, -1);
+ll v, e, n;
+tuple<ll, ll, ll> edge[n];
+vector<ll> p(n, -1);
 
 ll find(ll x)
 {
