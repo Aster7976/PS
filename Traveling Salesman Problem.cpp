@@ -4,9 +4,9 @@ ll dp[n][1 << n];
 
 void init()
 {
-    for(int i = 0; i < 16; i++)
+    for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < 1 << 16; j++)
+        for(int j = 0; j < 1 << n; j++)
             dp[i][j] = -1;
     }
 }
