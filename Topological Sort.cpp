@@ -1,6 +1,6 @@
 ll n;
-vector<ll> adj[32001];
-vector<ll> indegree(32001);
+vector<ll> adj[n];
+vector<ll> indegree(n);
 queue<ll> q;
 
 void ts()
