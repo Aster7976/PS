@@ -1,51 +1,36 @@
-// BOJ 1197
+ll v, e;
+tuple<ll, ll, ll> edge[100001];
+vector<ll> p(10001, -1);
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int v, e;
-tuple<int, int, int> edge[100001];
-vector<int> p(10001, -1);
-
-int find(int x)
+ll find(ll x)
 {
     if(p[x] < 0)
         return x;
-    p[x] = find(p[x]);
-    return find(p[x]);
+
+    return p[x] = find(p[x]);
 }
 
-bool uni(int u, int v)
+bool uni(ll x, ll y)
 {
-    u = find(u);
-    v = find(v);
-    if(u == v)
+    x = find(x);
+    y = find(y);
+
+    if(x == y)
         return false;
-    p[v] = u;
+
+    p[y] = x;
     return true;
 }
 
-int main()
+void mst()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    cin >> v >> e;
-    for(int i = 0; i < e; i++)
-    {
-        int a, b, cost;
-        cin >> a >> b >> cost;
-        edge[i] = {cost, a, b};
-    }
-    
     sort(edge, edge + e);
 
-    int cnt = 0;
-    int ans = 0;
-    for(int i = 0; i < e; i++)
+    ll cnt = 0;
+    ll ans = 0;
+    for(ll i = 0; i < e; i++)
     {
-        int a, b, cost;
+        ll a, b, cost;
         tie(cost, a, b) = edge[i];
 
         if(!uni(a, b))
@@ -57,6 +42,4 @@ int main()
         if(cnt == v - 1)
             break;
     }
-
-    cout << ans;
 }
