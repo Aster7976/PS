@@ -1,46 +1,29 @@
-// BOJ 1786
+string s, p;
+ll cnt;
 
-#include <bits/stdc++.h>
-
-using namespace std; 
-using ll = long long;
-using ld = long double;
-
-#define F first
-#define S second
-
-vector<int> failure(const string& s)
+vector<ll> failure(const string& x)
 {
-    vector<int> f(s.size());
+    vector<ll> f(x.size());
 
-    int j = 0;
-    for(int i = 1; i < s.size(); i++)
+    ll j = 0;
+    for(ll i = 1; i < x.size(); i++)
     {
-        while(j > 0 && s[i] != s[j])
+        while(j > 0 && x[i] != x[j])
             j = f[j - 1];
 
-        if(s[i] == s[j])
+        if(x[i] == x[j])
             f[i] = ++j;
     }
 
     return f;
 }
 
-int main()
+void kmp()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+    vector<ll> f = failure(p);
+    ll j = 0;
 
-    string s, p;
-    getline(cin, s);
-    getline(cin, p);
-
-    vector<int> f = failure(p);
-    int j = 0;
-    int cnt = 0;
-    vector<int> ans;
-
-    for(int i = 0; i < s.size(); i++)
+    for(ll i = 0; i < s.size(); i++)
     {
         while(j > 0 && s[i] != p[j])
             j = f[j - 1];
@@ -49,14 +32,6 @@ int main()
             j++;
 
         if(j == p.size())
-        {
             cnt++;
-            ans.push_back(i - p.size() + 2);
-        }
     }
-
-    cout << cnt << '\n';
-
-    for(auto i : ans)
-        cout << i << ' ';
 }
