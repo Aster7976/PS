@@ -1,3 +1,7 @@
+ll n;
+ll dist[n][n];
+ll nxt[n][n];
+
 void floyd()
 {
     for(ll i = 1; i <= n; i++)
