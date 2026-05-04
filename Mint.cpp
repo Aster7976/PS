@@ -22,11 +22,11 @@ public:
     {
         return x;
     }
-    operator ll() const
+    explicit operator ll() const
     {
         return (ll)x;
     }
-    operator int() const
+    explicit operator int() const
     {
         return (int)x;
     }
@@ -129,21 +129,7 @@ public:
 
     Mint inv() const
     {
-        ll a = x;
-        ll b = MOD;
-        ll c = 1;
-        ll d = 0;
-
-        while(b)
-        {
-            ll q = a / b;
-            a -= q * b;
-            swap(a, b);
-            c -= q * d;
-            swap(c, d);
-        }
-
-        return Mint(c);
+        return pow(MOD - 2);
     }
 
     Mint pow(ll y) const
