@@ -29,7 +29,7 @@ ll query(ll node, ll start, ll end, ll left, ll right)
 
 void update(ll node, ll start, ll end, ll idx, ll val)
 {
-    if(idx < start || idx > end)
+    if(idx < start || end < idx)
         return;
     if(start == end)
     {
