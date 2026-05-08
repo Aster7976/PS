@@ -17,7 +17,7 @@ void init(ll node, ll start, ll end)
 
 ll query(ll node, ll start, ll end, ll left, ll right)
 {
-    if(left > end || right < start)
+    if(right < start || end < left)
         return 0;
     if(left <= start && end <= right)
         return tree[node];
