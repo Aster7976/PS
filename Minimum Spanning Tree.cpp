@@ -1,5 +1,5 @@
 ll v, e, n;
-tuple<ll, ll, ll> edge[n];
+tuple<ll, ll, ll> edge[n]; // cost, a, b
 vector<ll> p(n, -1);
 
 ll find(ll x)
