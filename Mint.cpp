@@ -151,11 +151,11 @@ public:
         return result;
     }
 
-    friend std::ostream& operator<<(std::ostream& out, const Mint& y)
+    friend ostream& operator<<(ostream& out, const Mint& y)
     {
         return out << y.x;
     }
-    friend std::istream& operator>>(std::istream& in, Mint& y)
+    friend istream& operator>>(istream& in, Mint& y)
     {
         ll a;
         in >> a;
