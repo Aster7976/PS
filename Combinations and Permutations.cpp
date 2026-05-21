@@ -16,7 +16,7 @@ void init()
 
 mint nCr(ll x, ll y)
 {
-    if(y < 0 || y > x)
+    if(x < 0 || y < 0 || y > x)
         return 0;
     
     return fact[x] * ifact[y] * ifact[x - y];
@@ -24,7 +24,7 @@ mint nCr(ll x, ll y)
 
 mint nPr(ll x, ll y)
 {
-    if(y < 0 || y > x)
+    if(x < 0 || y < 0 || y > x)
         return 0;
 
     return fact[x] * ifact[x - y];
