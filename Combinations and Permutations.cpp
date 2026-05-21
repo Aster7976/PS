@@ -1,3 +1,6 @@
+vector<mint> fact(n);
+vector<mint> ifact(n);
+
 void init()
 {
     fact[0] = 1;
