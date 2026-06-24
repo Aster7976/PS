@@ -23,6 +23,4 @@ void lis()
             v[idx] = x;
         }
     } 
-
-    cout << v.size();
 }
