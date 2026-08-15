@@ -2,43 +2,47 @@ ll n;
 vector<ll> v(n);
 vector<ll> tree(4 * n);
 
-void init(ll node, ll start, ll end)
+void init(ll cur, ll st, ll en)
 {
-    if(start == end)
-	{
-        tree[node] = v[start];
-		return;
-	}
-	
-	init(node * 2, start, (start + end) / 2);
-	init(node * 2 + 1, (start + end) / 2 + 1, end);
-	tree[node] = tree[node * 2] + tree[node * 2 + 1];
-}
-
-ll query(ll node, ll start, ll end, ll left, ll right)
-{
-    if(right < start || end < left)
-        return 0;
-    if(left <= start && end <= right)
-        return tree[node];
-    
-    ll lsum = query(node * 2, start, (start + end) / 2, left, right);
-    ll rsum = query(node * 2 + 1, (start + end) / 2 + 1, end, left, right);
-    return lsum + rsum;
-}
-
-void update(ll node, ll start, ll end, ll idx, ll val)
-{
-    if(idx < start || end < idx)
-        return;
-    if(start == end)
+    if(st == en)
     {
-        v[idx] = val;
-        tree[node] = val;
+        tree[cur] = v[st];
         return;
     }
 
-    update(node * 2, start, (start + end) / 2, idx, val);
-    update(node * 2 + 1, (start + end) / 2 + 1, end, idx, val);
-    tree[node] = tree[node * 2] + tree[node * 2 + 1];
+    ll m = (st + en) / 2;
+    init(cur * 2, st, m);
+    init(cur * 2 + 1, m + 1, en);
+    tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
+}
+
+ll query(ll cur, ll st, ll en, ll l, ll r)
+{
+    if(r < st || en < l)
+        return 0;
+
+    if(l <= st && en <= r)
+        return tree[cur];
+
+    ll m = (st + en) / 2;
+    ll lsum = query(cur * 2, st, m, l, r);
+    ll rsum = query(cur * 2 + 1, m + 1, en, l, r);
+    return lsum + rsum;
+}
+
+void update(ll cur, ll st, ll en, ll idx, ll val)
+{
+    if(idx < st || en < idx)
+        return;
+
+    if(st == en)
+    {
+        tree[cur] = val;
+        return;
+    }
+
+    ll m = (st + en) / 2;
+    update(cur * 2, st, m, idx, val);
+    update(cur * 2 + 1, m + 1, en, idx, val);
+    tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
 }
