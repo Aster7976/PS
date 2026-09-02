@@ -38,6 +38,7 @@ void update(ll cur, ll st, ll en, ll idx, ll val)
     if(st == en)
     {
         tree[cur] = val;
+        v[st] = val;
         return;
     }
 
