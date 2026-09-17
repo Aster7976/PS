@@ -1,4 +1,5 @@
-vector<ll> p(300001, -1); // 집합 크기 = -p[x]
+ll n;
+vector<ll> p(n, -1); // 집합 크기 = -p[x]
 
 ll find(ll x)
 {
