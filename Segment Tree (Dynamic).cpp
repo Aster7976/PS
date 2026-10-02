@@ -27,30 +27,22 @@ ll query(Node* cur, ll st, ll en, ll l, ll r)
 
 void update(Node* cur, ll st, ll en, ll idx, ll val)
 {
+    if(idx < st || en < idx)
+        return;
+
     if(st == en)
     {
         cur->sum = val;
         return;
     }
 
+    if(!cur->l)
+        cur->l = new Node();
+    if(!cur->r)
+        cur->r = new Node();
+
     ll m = (st + en) / 2;
-    
-    if(idx <= m)
-    {
-        if(!cur->l)
-            cur->l = new Node();
-        
-        update(cur->l, st, m, idx, val);
-    }
-    else
-    {
-        if(!cur->r)
-            cur->r = new Node();
-
-        update(cur->r, m + 1, en, idx, val);
-    }
-
-    ll x = cur->l ? cur->l->sum : 0;
-    ll y = cur->r ? cur->r->sum : 0;
-    cur->sum = x + y;
+    update(cur->l, st, m, idx, val);
+    update(cur->r, m + 1, en, idx, val);
+    cur->sum = cur->l->sum + cur->r->sum;
 }
