@@ -39,7 +39,7 @@ ll query(ll cur, ll st, ll en, ll l, ll r)
 pll mxq(ll cur, ll st, ll en, ll l, ll r)
 {
     if(r < st || en < l)
-        return {-INF, -INF};
+        return {-INF, 1};
 
     if(l <= st && en <= r)
         return mx[cur];
@@ -53,7 +53,7 @@ pll mxq(ll cur, ll st, ll en, ll l, ll r)
 pll mnq(ll cur, ll st, ll en, ll l, ll r)
 {
     if(r < st || en < l)
-        return {INF, INF};
+        return {INF, 1};
 
     if(l <= st && en <= r)
         return mn[cur];
