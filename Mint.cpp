@@ -14,31 +14,9 @@ public:
             x += MOD;
     }
 
-    ll mod() const
-    {
-        return MOD;
-    }
-    ll val() const
-    {
-        return x;
-    }
-    explicit operator ll() const
-    {
-        return (ll)x;
-    }
-    explicit operator int() const
-    {
-        return (int)x;
-    }
-
-    Mint operator+() const
-    {
-        return *this;
-    }
-    Mint operator-() const
-    {
-        return Mint(0) - *this;
-    }
+    explicit operator ll() const { return x; }
+    explicit operator int() const { return (int)x; }
+    Mint operator-() const { return Mint() - *this; }
 
     Mint& operator+=(const Mint& y)
     {
@@ -59,36 +37,15 @@ public:
         x = x * y.x % MOD;
         return *this;
     }
-    Mint& operator/=(const Mint& y)
-    {
-        return *this *= y.inv();
-    }
+    Mint& operator/=(const Mint& y) { return *this *= y.inv(); }
 
-    Mint operator+(const Mint& y) const
-    {
-        return Mint(*this) += y;
-    }
-    Mint operator-(const Mint& y) const
-    {
-        return Mint(*this) -= y;
-    }
-    Mint operator*(const Mint& y) const
-    {
-        return Mint(*this) *= y;
-    }
-    Mint operator/(const Mint& y) const
-    {
-        return Mint(*this) /= y;
-    }
+    friend Mint operator+(Mint a, const Mint& b) { return a += b; }
+    friend Mint operator-(Mint a, const Mint& b) { return a -= b; }
+    friend Mint operator*(Mint a, const Mint& b) { return a *= b; }
+    friend Mint operator/(Mint a, const Mint& b) { return a /= b; }
 
-    Mint& operator++()
-    {
-        return *this += 1;
-    }
-    Mint& operator--()
-    {
-        return *this -= 1;
-    }
+    Mint& operator++() { return *this += 1; }
+    Mint& operator--() { return *this -= 1; }
     Mint operator++(int)
     {
         Mint t = *this;
@@ -102,35 +59,14 @@ public:
         return t;
     }
 
-    bool operator==(const Mint& y) const
-    {
-        return x == y.x;
-    }
-    bool operator!=(const Mint& y) const
-    {
-        return x != y.x;
-    }
-    bool operator<(const Mint& y) const
-    {
-        return x < y.x;
-    }
-    bool operator<=(const Mint& y) const
-    {
-        return x <= y.x;
-    }
-    bool operator>(const Mint& y) const
-    {
-        return x > y.x;
-    }
-    bool operator>=(const Mint& y) const
-    {
-        return x >= y.x;
-    }
+    friend bool operator==(const Mint& a, const Mint& b) { return a.x == b.x; }
+    friend bool operator!=(const Mint& a, const Mint& b) { return a.x != b.x; }
+    friend bool operator<(const Mint& a, const Mint& b) { return a.x < b.x; }
+    friend bool operator<=(const Mint& a, const Mint& b) { return a.x <= b.x; }
+    friend bool operator>(const Mint& a, const Mint& b) { return a.x > b.x; }
+    friend bool operator>=(const Mint& a, const Mint& b) { return a.x >= b.x; }
 
-    Mint inv() const
-    {
-        return pow(MOD - 2);
-    }
+    Mint inv() const { return pow(MOD - 2); }
 
     Mint pow(ll y) const
     {
@@ -151,37 +87,13 @@ public:
         return result;
     }
 
-    friend ostream& operator<<(ostream& out, const Mint& y)
-    {
-        return out << y.x;
-    }
+    friend ostream& operator<<(ostream& out, const Mint& y) { return out << y.x; }
     friend istream& operator>>(istream& in, Mint& y)
     {
         ll a;
         in >> a;
         y = Mint(a);
         return in;
-    }
-
-    template<typename T>
-    friend Mint operator+(T l, const Mint& r)
-    {
-        return Mint(l) + r;
-    }
-    template<typename T>
-    friend Mint operator-(T l, const Mint& r)
-    {
-        return Mint(l) - r;
-    }
-    template<typename T>
-    friend Mint operator*(T l, const Mint& r)
-    {
-        return Mint(l) * r;
-    }
-    template<typename T>
-    friend Mint operator/(T l, const Mint& r)
-    {
-        return Mint(l) / r;
     }
 };
 
