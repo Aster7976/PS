@@ -1,13 +1,11 @@
 ll n;
-ll dist[n][n];
-ll nxt[n][n];
+vector dist(n, vector<ll>(n, INF));
+vector nxt(n, vector<ll>(n));
 
 void floyd()
 {
     for(ll i = 1; i <= n; i++)
-        for(ll j = 1; j <= n; j++)
-            if(i != j)
-                dist[i][j] = INF;
+        dist[i][i] = 0;
 
     for(ll i = 1; i <= n; i++)
         for(ll j = 1; j <= n; j++)
