@@ -22,6 +22,5 @@ bool uni(ll x, ll y)
 
     p[x] += p[y];
     p[y] = x;
-
     return true;
 }
