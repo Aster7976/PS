@@ -4,24 +4,6 @@ vector<ll> tree(4 * n);
 vector<pll> mx(4 * n, {-INF, 1});
 vector<pll> mn(4 * n, {INF, 1});
 
-void init(ll cur, ll st, ll en)
-{
-    if(st == en)
-    {
-        tree[cur] = v[st];
-        mx[cur] = {v[st], st};
-        mn[cur] = {v[st], st};
-        return;
-    }
-
-    ll m = (st + en) / 2;
-    init(cur * 2, st, m);
-    init(cur * 2 + 1, m + 1, en);
-    tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
-    mx[cur] = max(mx[cur * 2], mx[cur * 2 + 1]);
-    mn[cur] = min(mn[cur * 2], mn[cur * 2 + 1]);
-}
-
 ll query(ll cur, ll st, ll en, ll l, ll r)
 {
     if(r < st || en < l)
@@ -64,23 +46,22 @@ pll mnq(ll cur, ll st, ll en, ll l, ll r)
     return min(lmn, rmn);
 }
 
-void update(ll cur, ll st, ll en, ll idx, ll val)
+void update(ll cur, ll st, ll en, ll idx)
 {
     if(idx < st || en < idx)
         return;
 
     if(st == en)
     {
-        tree[cur] = val;
-        mx[cur] = {val, st};
-        mn[cur] = {val, st};
-        v[st] = val;
+        tree[cur] = v[idx];
+        mx[cur] = {v[idx], st};
+        mn[cur] = {v[idx], st};
         return;
     }
 
     ll m = (st + en) / 2;
-    update(cur * 2, st, m, idx, val);
-    update(cur * 2 + 1, m + 1, en, idx, val);
+    update(cur * 2, st, m, idx);
+    update(cur * 2 + 1, m + 1, en, idx);
     tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
     mx[cur] = max(mx[cur * 2], mx[cur * 2 + 1]);
     mn[cur] = min(mn[cur * 2], mn[cur * 2 + 1]);
