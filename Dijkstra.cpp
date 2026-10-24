@@ -12,13 +12,13 @@ void dijkstra()
 
     while(!pq.empty())
     {
-        auto cur = pq.top();
+        pll cur = pq.top();
         pq.pop();
 
         if(dist[cur.S] != cur.F)
             continue;
 
-        for(auto next : adj[cur.S])
+        for(pll next : adj[cur.S])
         {
             if(dist[next.S] <= dist[cur.S] + next.F)
                 continue;
