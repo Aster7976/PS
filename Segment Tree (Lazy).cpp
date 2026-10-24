@@ -1,21 +1,6 @@
 ll n;
-vector<ll> v(n);
 vector<ll> tree(4 * n);
 vector<ll> lazy(4 * n);
-
-void init(ll cur, ll st, ll en)
-{
-    if(st == en)
-    {
-        tree[cur] = v[st];
-        return;
-    }
-
-    ll m = (st + en) / 2;
-    init(cur * 2, st, m);
-    init(cur * 2 + 1, m + 1, en);
-    tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
-}
 
 void prop(ll cur, ll st, ll en)
 {
