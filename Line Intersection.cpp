@@ -1,5 +1,3 @@
-vector<pll> p(5);
-
 ll ccw(pll a, pll b, pll c)
 {
     ll cp = (b.F - a.F) * (c.S - a.S)
@@ -13,19 +11,19 @@ ll ccw(pll a, pll b, pll c)
         return 0;
 }
 
-void line_intersection()
+void line_intersection(pll a, pll b, pll c, pll d)
 {
-    ll c1 = ccw(p[1], p[2], p[3]) * ccw(p[1], p[2], p[4]);
-    ll c2 = ccw(p[3], p[4], p[1]) * ccw(p[3], p[4], p[2]);
+    ll c1 = ccw(a, b, c) * ccw(a, b, d);
+    ll c2 = ccw(c, d, a) * ccw(c, d, b);
 
     if(c1 == 0 && c2 == 0)
     {
-        if(p[1] > p[2])
-            swap(p[1], p[2]);
-        if(p[3] > p[4])
-            swap(p[3], p[4]);
+        if(a > b)
+            swap(a, b);
+        if(c > d)
+            swap(c, d);
 
-        cout << (p[2] >= p[3] && p[4] >= p[1]);
+        cout << (b >= c && d >= a);
     }
     else
         cout << (c1 <= 0 && c2 <= 0);
