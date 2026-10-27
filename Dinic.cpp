@@ -4,10 +4,9 @@ public:
     ll to, rev, cap;
 };
 
-ll n;
-vector<vector<Edge>> edges(n);
-vector<ll> level(n);
-vector<ll> it(n);
+vector<vector<Edge>> edges(9);
+vector<ll> level(9);
+vector<ll> it(9);
 
 void add(ll u, ll v, ll cap)
 {
@@ -15,12 +14,12 @@ void add(ll u, ll v, ll cap)
     edges[v].push_back({u, (ll)edges[u].size() - 1, 0});
 }
 
-bool bfs(ll s, ll t) // s = source, t = sink
+bool bfs(ll src, ll sink)
 {
     fill(level.begin(), level.end(), -1);
     queue<ll> q;
-    level[s] = 0;
-    q.push(s);
+    level[src] = 0;
+    q.push(src);
 
     while(!q.empty())
     {
@@ -37,12 +36,12 @@ bool bfs(ll s, ll t) // s = source, t = sink
         }
     }
 
-    return level[t] >= 0;
+    return level[sink] >= 0;
 }
 
-ll dfs(ll cur, ll t, ll f)
+ll dfs(ll cur, ll sink, ll f)
 {
-    if(cur == t)
+    if(cur == sink)
         return f;
 
     for(ll& i = it[cur]; i < edges[cur].size(); i++)
@@ -51,7 +50,7 @@ ll dfs(ll cur, ll t, ll f)
 
         if(next.cap > 0 && level[next.to] == level[cur] + 1)
         {
-            ll d = dfs(next.to, t, min(f, next.cap));
+            ll d = dfs(next.to, sink, min(f, next.cap));
 
             if(d > 0)
             {
@@ -65,16 +64,16 @@ ll dfs(ll cur, ll t, ll f)
     return 0;
 }
 
-ll mf(ll s, ll t)
+ll mf(ll src, ll sink)
 {
     ll flow = 0;
 
-    while(bfs(s, t))
+    while(bfs(src, sink))
     {
         fill(it.begin(), it.end(), 0);
         ll f;
 
-        while((f = dfs(s, t, INF)) > 0)
+        while((f = dfs(src, sink, INF)) > 0)
             flow += f;
     }
 
