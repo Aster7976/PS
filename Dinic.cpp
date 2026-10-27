@@ -28,11 +28,14 @@ bool bfs(ll src, ll sink)
 
         for(Edge next : edges[cur])
         {
-            if(next.cap > 0 && level[next.to] < 0)
-            {
-                level[next.to] = level[cur] + 1;
-                q.push(next.to);
-            }
+            if(next.cap <= 0)
+                continue;
+
+            if(level[next.to] >= 0)
+                continue;
+
+            level[next.to] = level[cur] + 1;
+            q.push(next.to);
         }
     }
 
@@ -48,16 +51,19 @@ ll dfs(ll cur, ll sink, ll f)
     {
         Edge& next = edges[cur][i];
 
-        if(next.cap > 0 && level[next.to] == level[cur] + 1)
-        {
-            ll d = dfs(next.to, sink, min(f, next.cap));
+        if(next.cap <= 0)
+            continue;
 
-            if(d > 0)
-            {
-                next.cap -= d;
-                edges[next.to][next.rev].cap += d;
-                return d;
-            }
+        if(level[next.to] != level[cur] + 1)
+            continue;
+
+        ll d = dfs(next.to, sink, min(f, next.cap));
+
+        if(d > 0)
+        {
+            next.cap -= d;
+            edges[next.to][next.rev].cap += d;
+            return d;
         }
     }
 
