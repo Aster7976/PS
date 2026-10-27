@@ -4,6 +4,7 @@ public:
     ll to, rev, cap;
 };
 
+ll n;
 vector<vector<Edge>> edges(n);
 vector<ll> level(n);
 vector<ll> it(n);
