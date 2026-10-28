@@ -1,4 +1,5 @@
-template <ll MOD>
+const ll MOD = 998244353;
+
 class Mint
 {
 public:
@@ -96,5 +97,3 @@ public:
         return in;
     }
 };
-
-using mint = Mint<998244353>;
