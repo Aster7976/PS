@@ -4,9 +4,10 @@ public:
     ll to, rev, cap;
 };
 
-vector<vector<Edge>> edges(9);
-vector<ll> level(9);
-vector<ll> it(9);
+ll n;
+vector<vector<Edge>> edges(n);
+vector<ll> level(n);
+vector<ll> it(n);
 
 void add(ll u, ll v, ll cap)
 {
