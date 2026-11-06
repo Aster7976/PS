@@ -1,26 +1,17 @@
-void lis()
-{
-    vector<ll> v;
-    ll n;
-    cin >> n;
+ll n;
+vector<ll> v(n);
+vector<ll> lis;
 
+void f()
+{
     for(ll i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-
-        if(i == 0)
-        {
-            v.push_back(x);
-            continue;
-        }
-
-        if(x > v.back())
-            v.push_back(x);
+        if(lis.empty() || v[i] > lis.back())
+            lis.push_back(v[i]);
         else
         {
-            ll idx = lower_bound(v.begin(), v.end(), x) - v.begin();
-            v[idx] = x;
+            auto it = lower_bound(lis.begin(), lis.end(), v[i]);
+            *it = v[i];
         }
     } 
 }
