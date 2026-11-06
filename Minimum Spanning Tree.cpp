@@ -1,6 +1,6 @@
 ll v, e, n;
 tuple<ll, ll, ll> edge[n]; // cost, a, b
-vector<ll> p(300001, -1); // 집합 크기 = -p[x]
+vector<ll> p(n, -1);
 
 ll find(ll x)
 {
@@ -18,12 +18,7 @@ bool uni(ll x, ll y)
     if(x == y)
         return false;
 
-    if(p[x] > p[y])
-        swap(x, y);
-
-    p[x] += p[y];
     p[y] = x;
-
     return true;
 }
 
