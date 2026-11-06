@@ -1,5 +1,5 @@
 ll v, e, n;
-tuple<ll, ll, ll> edge[n]; // cost, a, b
+vector<vector<ll>> edge; // cost, a, b
 vector<ll> p(n, -1);
 
 ll find(ll x)
@@ -24,19 +24,16 @@ bool uni(ll x, ll y)
 
 void mst()
 {
-    sort(edge, edge + e);
+    sort(edge.begin(), edge.end());
 
     ll cnt = 0;
     ll ans = 0;
     for(ll i = 0; i < e; i++)
     {
-        ll a, b, cost;
-        tie(cost, a, b) = edge[i];
-
-        if(!uni(a, b))
+        if(!uni(edge[i][1], edge[i][2]))
             continue;
 
-        ans += cost;
+        ans += edge[i][0];
         cnt++;
 
         if(cnt == v - 1)
