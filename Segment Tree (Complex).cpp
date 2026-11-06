@@ -1,14 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-using ll = long long;
-using pll = pair<ll, ll>;
-
-#define F first
-#define S second
-
-const ll INF = 2e18;
-
 ll n;
 vector<ll> tree(4 * n);
 vector<pll> mx(4 * n, {-INF, 1});
@@ -75,10 +64,4 @@ void update(ll cur, ll st, ll en, ll idx, ll val)
     tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
     mx[cur] = max(mx[cur * 2], mx[cur * 2 + 1]);
     mn[cur] = min(mn[cur * 2], mn[cur * 2 + 1]);
-}
-
-int main()
-{
-    cin.tie(0);
-    ios::sync_with_stdio(0);
 }
