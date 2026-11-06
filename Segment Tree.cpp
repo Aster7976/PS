@@ -1,5 +1,4 @@
 ll n;
-vector<ll> v(n);
 vector<ll> tree(4 * n);
 
 ll query(ll cur, ll st, ll en, ll l, ll r)
@@ -16,19 +15,19 @@ ll query(ll cur, ll st, ll en, ll l, ll r)
     return lsum + rsum;
 }
 
-void update(ll cur, ll st, ll en, ll idx)
+void update(ll cur, ll st, ll en, ll idx, ll val)
 {
     if(idx < st || en < idx)
         return;
 
     if(st == en)
     {
-        tree[cur] = v[idx];
+        tree[cur] = val;
         return;
     }
 
     ll m = (st + en) / 2;
-    update(cur * 2, st, m, idx);
-    update(cur * 2 + 1, m + 1, en, idx);
+    update(cur * 2, st, m, idx, val);
+    update(cur * 2 + 1, m + 1, en, idx, val);
     tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
 }
