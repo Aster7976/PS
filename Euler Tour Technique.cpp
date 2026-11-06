@@ -14,5 +14,5 @@ void dfs(ll cur)
     out[cur] = turn;
 }
 
-// v의 값 변경 - update(1, 1, n, in[v]);
-// v의 서브트리 합 - query(1, 1, n, in[v], out[v]);
+// change v - update(1, 1, n, in[v]);
+// sum of subtree(v) - query(1, 1, n, in[v], out[v]);
