@@ -14,5 +14,5 @@ void dfs(ll cur)
     out[cur] = turn;
 }
 
-// change v - update(1, 1, n, in[v]);
-// sum of subtree(v) - query(1, 1, n, in[v], out[v]);
+// change x - update(1, 1, n, in[x]);
+// sum of subtree(x) - query(1, 1, n, in[x], out[x]);
