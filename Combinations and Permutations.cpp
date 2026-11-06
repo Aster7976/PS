@@ -1,5 +1,6 @@
-vector<mint> fact(n);
-vector<mint> ifact(n);
+ll n;
+vector<Mint> fact(n);
+vector<Mint> ifact(n);
 
 void init()
 {
@@ -14,7 +15,7 @@ void init()
         ifact[i] = ifact[i + 1] * (i + 1);
 }
 
-mint nCr(ll x, ll y)
+Mint nCr(ll x, ll y)
 {
     if(x < 0 || y < 0 || y > x)
         return 0;
@@ -22,7 +23,7 @@ mint nCr(ll x, ll y)
     return fact[x] * ifact[y] * ifact[x - y];
 }
 
-mint nPr(ll x, ll y)
+Mint nPr(ll x, ll y)
 {
     if(x < 0 || y < 0 || y > x)
         return 0;
@@ -30,7 +31,7 @@ mint nPr(ll x, ll y)
     return fact[x] * ifact[x - y];
 }
 
-mint nHr(ll x, ll y)
+Mint nHr(ll x, ll y)
 {
     if(x == 0 && y == 0)
         return 1;
@@ -38,7 +39,7 @@ mint nHr(ll x, ll y)
     return nCr(x + y - 1, y);
 }
 
-mint nPIr(mint x, ll y)
+Mint nPIr(Mint x, ll y)
 {
     return x.pow(y);
 }
