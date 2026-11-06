@@ -64,6 +64,4 @@ ll hldq(ll a, ll b)
     return ret;
 }
 
-// 노드 x의 값을 변경
-// v[in[x]] = val;
-// update(1, 1, n, in[x]);
+// change x - update(1, 1, n, in[x], val);
