@@ -1,20 +1,12 @@
 ll n;
 vector<ll> tree(4 * n);
-vector<ll> lazy(4 * n);
+vector<ll> lazy(8 * n);
 
 void prop(ll cur, ll st, ll en)
 {
-    if(lazy[cur] == 0)
-        return;
-
     tree[cur] += lazy[cur] * (en - st + 1);
-
-    if(st != en)
-    {
-        lazy[cur * 2] += lazy[cur];
-        lazy[cur * 2 + 1] += lazy[cur];
-    }
-
+    lazy[cur * 2] += lazy[cur];
+    lazy[cur * 2 + 1] += lazy[cur];
     lazy[cur] = 0;
 }
 
