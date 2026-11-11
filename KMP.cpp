@@ -1,6 +1,3 @@
-string s, p;
-ll cnt;
-
 vector<ll> failure(string x)
 {
     vector<ll> f(x.size());
@@ -20,7 +17,9 @@ vector<ll> failure(string x)
 
 void kmp()
 {
+    string s, p;
     vector<ll> f = failure(p);
+    vector<ll> ans;
     ll j = 0;
 
     for(ll i = 0; i < s.size(); i++)
@@ -32,6 +31,6 @@ void kmp()
             j++;
 
         if(j == p.size())
-            cnt++;
+            ans.push_back(i - p.size() + 2);
     }
 }
