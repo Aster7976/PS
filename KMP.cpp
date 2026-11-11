@@ -1,7 +1,7 @@
 string s, p;
 ll cnt;
 
-vector<ll> failure(string)
+vector<ll> failure(string x)
 {
     vector<ll> f(x.size());
     ll j = 0;
