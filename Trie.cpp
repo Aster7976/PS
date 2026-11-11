@@ -1,14 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-using ll = long long;
-using pll = pair<ll, ll>;
-
-#define F first
-#define S second
-
-const ll INF = 2e18;
-
 ll n, len, letter;
 vector<char> chk(n * len);
 vector nxt(n * len, vector<ll>(letter, -1));
@@ -52,10 +41,4 @@ void erase(string s)
         cur = nxt[cur][i - 'a'];
 
     chk[cur] = false;
-}
-
-int main()
-{
-    cin.tie(0);
-    ios::sync_with_stdio(0);
 }
