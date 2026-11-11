@@ -1,14 +1,18 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+using ll = long long;
+using pll = pair<ll, ll>;
+
+#define F first
+#define S second
+
+const ll INF = 2e18;
+
 ll n, len, letter;
 vector<char> chk(n * len);
-vector nxt(n * len, vector<ll>(letter));
+vector nxt(n * len, vector<ll>(letter, -1));
 ll cnt = 1;
-
-void init()
-{
-    for(ll i = 0; i < n * len; i++)
-        for(ll j = 0; j < letter; j++)
-            nxt[i][j] = -1;
-}
 
 void insert(string s)
 {
@@ -48,4 +52,10 @@ void erase(string s)
         cur = nxt[cur][i - 'a'];
 
     chk[cur] = false;
+}
+
+int main()
+{
+    cin.tie(0);
+    ios::sync_with_stdio(0);
 }
