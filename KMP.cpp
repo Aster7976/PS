@@ -1,11 +1,11 @@
 string s, p;
 ll cnt;
 
-vector<ll> failure(const string& x)
+vector<ll> failure(string)
 {
     vector<ll> f(x.size());
-
     ll j = 0;
+    
     for(ll i = 1; i < x.size(); i++)
     {
         while(j > 0 && x[i] != x[j])
