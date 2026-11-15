@@ -1,9 +1,9 @@
 void dijkstra()
 {
-    priority_queue<pll, vector<pll>, greater<>> pq;
     ll n, st;
     vector<vector<pll>> adj(n);
     vector<ll> dist(n, INF);
+    priority_queue<pll, vector<pll>, greater<>> pq;
 
     dist[st] = 0;
     pq.push({dist[st], st});
