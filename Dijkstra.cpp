@@ -1,13 +1,12 @@
-ll n, start;
-vector<vector<pll>> adj(n);
-vector<ll> dist(n, INF);
-
 void dijkstra()
 {
     priority_queue<pll, vector<pll>, greater<>> pq;
+    ll n, st;
+    vector<vector<pll>> adj(n);
+    vector<ll> dist(n, INF);
 
-    dist[start] = 0;
-    pq.push({dist[start], start});
+    dist[st] = 0;
+    pq.push({dist[st], st});
 
     while(!pq.empty())
     {
