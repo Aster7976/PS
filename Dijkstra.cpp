@@ -4,7 +4,7 @@ vector<ll> dist(n, INF);
 
 void dijkstra()
 {
-    priority_queue<pll, vector<pll>, greater<pll>> pq;
+    priority_queue<pll, vector<pll>, greater<>> pq;
 
     dist[start] = 0;
     pq.push({dist[start], start});
