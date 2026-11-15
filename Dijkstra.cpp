@@ -1,7 +1,6 @@
 ll n, start;
 vector<pll> adj[n];
 vector<ll> dist(n, INF);
-vector<ll> pre(n);
 
 void dijkstra()
 {
@@ -24,7 +23,6 @@ void dijkstra()
                 continue;
 
             dist[next.S] = dist[cur.S] + next.F;
-            pre[next.S] = cur.S;
             pq.push({dist[next.S], next.S});
         }
     }
