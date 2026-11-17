@@ -1,4 +1,4 @@
-string base_conversion(string& s, ll from, ll to)
+string base_conversion(string s, ll from, ll to)
 {
     if(s == "" || s == "0")
         return "0";
@@ -6,14 +6,12 @@ string base_conversion(string& s, ll from, ll to)
     vector<ll> num;
 
     for(char c : s)
-    {
         if(c >= 'a')
             num.push_back(c - 'a' + 36);
         else if(c >= 'A')
             num.push_back(c - 'A' + 10);
         else
             num.push_back(c - '0');
-    }
 
     string res;
     ll st = 0;
