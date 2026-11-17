@@ -3,8 +3,10 @@ vector<vector<ll>> adj(n);
 vector<ll> depth(n);
 vector sparse(n, vector<ll>(log n);
 
-void init(ll cur)
+void lca()
 {
+    depth[1] = 1;
+
     for(auto next : adj[cur])
         if(depth[next] == 0)
         {
@@ -12,21 +14,11 @@ void init(ll cur)
             depth[next] = depth[cur] + 1;
             init(next);
         }
-}
 
-void fill_sparse()
-{
     for(ll i = 1; i < log n; i++)
         for(ll j = 1; j <= n; j++)
             if(sparse[j][i - 1] != 0)
                 sparse[j][i] = sparse[sparse[j][i - 1]][i - 1];
-}
-
-void lca()
-{
-    depth[1] = 1;
-    init(1);
-    fill_sparse();
 
     ll a, b;
 
