@@ -16,26 +16,17 @@ void init()
 }
 
 Mint nCr(ll x, ll y)
-{
-    if(x < 0 || y < 0 || y > x)
-        return 0;
-    
+{   
     return fact[x] * ifact[y] * ifact[x - y];
 }
 
 Mint nPr(ll x, ll y)
 {
-    if(x < 0 || y < 0 || y > x)
-        return 0;
-
     return fact[x] * ifact[x - y];
 }
 
 Mint nHr(ll x, ll y)
 {
-    if(x == 0 && y == 0)
-        return 1;
-
     return nCr(x + y - 1, y);
 }
 
