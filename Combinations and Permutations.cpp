@@ -15,22 +15,7 @@ void init()
         ifact[i] = ifact[i + 1] * (i + 1);
 }
 
-Mint nCr(ll x, ll y)
-{   
-    return fact[x] * ifact[y] * ifact[x - y];
-}
-
-Mint nPr(ll x, ll y)
-{
-    return fact[x] * ifact[x - y];
-}
-
-Mint nHr(ll x, ll y)
-{
-    return nCr(x + y - 1, y);
-}
-
-Mint nPIr(Mint x, ll y)
-{
-    return x.pow(y);
-}
+Mint nCr(ll x, ll y) { return fact[x] * ifact[y] * ifact[x - y]; }
+Mint nPr(ll x, ll y) { return fact[x] * ifact[x - y]; }
+Mint nHr(ll x, ll y) { return nCr(x + y - 1, y); }
+Mint nPIr(Mint x, ll y) { return x.pow(y); }
