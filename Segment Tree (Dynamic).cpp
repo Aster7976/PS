@@ -20,9 +20,9 @@ ll query(Node* cur, ll st, ll en, ll l, ll r)
         return cur->sum;
 
     ll m = (st + en) / 2;
-    ll lsum = query(cur->l, st, m, l, r);
-    ll rsum = query(cur->r, m + 1, en, l, r);
-    return lsum + rsum;
+    ll lseg = query(cur->l, st, m, l, r);
+    ll rseg = query(cur->r, m + 1, en, l, r);
+    return lseg + rseg;
 }
 
 void update(Node* cur, ll st, ll en, ll idx, ll val)
