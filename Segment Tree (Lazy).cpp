@@ -1,10 +1,10 @@
 ll n;
-vector<ll> tree(4 * n);
+vector<ll> seg(4 * n);
 vector<ll> lazy(8 * n);
 
 void prop(ll cur, ll st, ll en)
 {
-    tree[cur] += lazy[cur] * (en - st + 1);
+    seg[cur] += lazy[cur] * (en - st + 1);
     lazy[cur * 2] += lazy[cur];
     lazy[cur * 2 + 1] += lazy[cur];
     lazy[cur] = 0;
@@ -18,12 +18,12 @@ ll query(ll cur, ll st, ll en, ll l, ll r)
         return 0;
 
     if(l <= st && en <= r)
-        return tree[cur];
+        return seg[cur];
 
     ll m = (st + en) / 2;
-    ll lsum = query(cur * 2, st, m, l, r);
-    ll rsum = query(cur * 2 + 1, m + 1, en, l, r);
-    return lsum + rsum;
+    ll lseg = query(cur * 2, st, m, l, r);
+    ll rseg = query(cur * 2 + 1, m + 1, en, l, r);
+    return lseg + rseg;
 }
 
 void update(ll cur, ll st, ll en, ll l, ll r, ll val)
@@ -43,5 +43,5 @@ void update(ll cur, ll st, ll en, ll l, ll r, ll val)
     ll m = (st + en) / 2;
     update(cur * 2, st, m, l, r, val);
     update(cur * 2 + 1, m + 1, en, l, r, val);
-    tree[cur] = tree[cur * 2] + tree[cur * 2 + 1];
+    seg[cur] = seg[cur * 2] + seg[cur * 2 + 1];
 }
