@@ -13,7 +13,7 @@ void dfs(ll cur)
     st.push(cur);
     stc[cur] = true;
 
-    for(auto next : adj[cur])
+    for(ll next : adj[cur])
     {
         if(!order[next])
         {
@@ -28,7 +28,7 @@ void dfs(ll cur)
     {
         vector<ll> tmp;
 
-        while(true)
+        while(1)
         {
             ll x = st.top();
             st.pop();
