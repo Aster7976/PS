@@ -48,7 +48,7 @@ void fft(vector<complex<double>>& a, bool inv)
             i /= n;
 }
 
-vector<ll> mul(const vector<ll>& a, const vector<ll>& b)
+vector<ll> mul(vector<ll> a, vector<ll> b)
 {
     if(a.empty() || b.empty())
         return {};
