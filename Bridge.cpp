@@ -23,7 +23,7 @@ ll dfs(ll cur, ll par)
         ll sub = dfs(next, cur);
 
         if(sub > order[cur])
-            bridge.push_back({min(cur, next), max(cur, next)});
+            bridge.push_back({cur, next});
         
         low = min(low, sub);
     }
