@@ -63,5 +63,3 @@ ll hldq(ll a, ll b)
     ret += query(1, 1, n, in[a], in[b]);
     return ret;
 }
-
-// change x - update(1, 1, n, in[x], val);
