@@ -50,9 +50,6 @@ void fft(vector<complex<double>>& a, bool inv)
 
 vector<ll> mul(vector<ll> a, vector<ll> b)
 {
-    if(a.empty() || b.empty())
-        return {};
-
     vector<complex<double>> fa(a.begin(), a.end());
     vector<complex<double>> fb(b.begin(), b.end());
     ll n = 1;
