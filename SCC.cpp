@@ -1,7 +1,6 @@
 ll n;
 vector<vector<ll>> adj(n);
-vector<ll> order(n);
-vector<ll> low(n);
+vector<ll> order(n), low(n);
 vector<bool> stc(n);
 stack<ll> st;
 vector<vector<ll>> scc;
