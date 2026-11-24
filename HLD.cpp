@@ -1,10 +1,5 @@
 ll n;
-vector<ll> sz(n);
-vector<ll> depth(n);
-vector<ll> par(n);
-vector<ll> top(n);
-vector<ll> in(n);
-vector<ll> out(n);
+vector<ll> sz(n), depth(n), par(n), top(n), in(n), out(n);
 vector<vector<ll>> adj(n);
 
 void dfs1(ll cur)
