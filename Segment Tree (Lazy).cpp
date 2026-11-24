@@ -1,6 +1,5 @@
 ll n;
-vector<ll> seg(4 * n);
-vector<ll> lazy(8 * n);
+vector<ll> seg(4 * n), lazy(8 * n);
 
 void prop(ll cur, ll st, ll en)
 {
