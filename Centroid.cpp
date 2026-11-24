@@ -1,5 +1,5 @@
 ll n;
-vector<ll> adj[n];
+vector<vector<ll>> adj(n);
 vector<ll> sz(n);
 vector<char> vis(n);
 ll cent = -1;
