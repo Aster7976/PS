@@ -1,6 +1,5 @@
 ll n;
-vector<Mint> fact(n);
-vector<Mint> ifact(n);
+vector<Mint> fact(n), ifact(n);
 
 void init()
 {
