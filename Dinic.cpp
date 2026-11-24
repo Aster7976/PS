@@ -6,8 +6,7 @@ public:
 
 ll n;
 vector<vector<Edge>> edges(n);
-vector<ll> level(n);
-vector<ll> it(n);
+vector<ll> level(n), it(n);
 
 void add(ll u, ll v, ll cap)
 {
