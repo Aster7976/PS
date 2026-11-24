@@ -1,4 +1,4 @@
-void ntt(vector<Mint>& a, bool inv)
+void ntt(vector<Mint> a, bool inv)
 {
     ll n = a.size();
     ll j = 0;
@@ -52,11 +52,8 @@ void ntt(vector<Mint>& a, bool inv)
     }
 }
 
-vector<Mint> mul(const vector<Mint>& a, const vector<Mint>& b)
+vector<Mint> mul(vector<Mint> a, vector<Mint> b)
 {
-    if(a.empty() || b.empty())
-        return {};
-
     vector<Mint> fa(a.begin(), a.end());
     vector<Mint> fb(b.begin(), b.end());
     ll n = 1;
