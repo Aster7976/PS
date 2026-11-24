@@ -1,9 +1,8 @@
 ll n;
-vector<vector<ll>> adj(n);
+vector<vector<ll>> adj(n), scc;
 vector<ll> order(n), low(n);
-vector<bool> stc(n);
+vector<char> stc(n);
 stack<ll> st;
-vector<vector<ll>> scc;
 ll turn = 0;
 
 void dfs(ll cur)
