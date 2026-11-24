@@ -1,7 +1,6 @@
 ll n;
 vector<vector<ll>> adj(n);
-vector<ll> in(n);
-vector<ll> out(n);
+vector<ll> in(n), out(n);
 ll turn = 0;
 
 void dfs(ll cur)
