@@ -6,10 +6,8 @@ public:
 
 ll n;
 vector<vector<Edge>> edges(n);
-vector<ll> dist(n);
-vector<ll> it(n);
-vector<char> inq(n);
-vector<char> vis(n);
+vector<ll> dist(n), it(n);
+vector<char> inq(n), vis(n);
 
 void add(ll u, ll v, ll cap, ll cost)
 {
