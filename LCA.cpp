@@ -1,27 +1,29 @@
 ll n;
 vector<vector<ll>> adj(n);
+vector sp(n, vector<ll>(log n));
 vector<ll> depth(n);
-vector sparse(n, vector<ll>(log n);
 
-void lca()
+void dfs(ll cur)
 {
-    depth[1] = 1;
-
-    for(auto next : adj[cur])
+    for(ll next : adj[cur])
         if(depth[next] == 0)
         {
-            sparse[next][0] = cur;
+            sp[next][0] = cur;
             depth[next] = depth[cur] + 1;
-            init(next);
+            dfs(next);
         }
+}
 
+void init()
+{
     for(ll i = 1; i < log n; i++)
-        for(ll j = 1; j <= n; j++)
-            if(sparse[j][i - 1] != 0)
-                sparse[j][i] = sparse[sparse[j][i - 1]][i - 1];
+        for(ll j = 1; j < n; j++)
+            if(sp[j][i - 1] != 0)
+                sp[j][i] = sp[sp[j][i - 1]][i - 1];
+}
 
-    ll a, b;
-
+ll lca(ll a, ll b)
+{
     if(depth[a] < depth[b])
         swap(a, b);
 
@@ -30,9 +32,9 @@ void lca()
 
     while(diff > 0)
     {
-        if(diff % 2 == 1)   
-            a = sparse[a][cur];
-        
+        if(diff % 2 == 1)
+            a = sp[a][cur];
+
         diff /= 2;
         cur++;
     }
@@ -40,12 +42,14 @@ void lca()
     if(a != b)
     {
         for(ll i = log n - 1; i >= 0; i--)
-            if(sparse[a][i] != 0 && sparse[a][i] != sparse[b][i])
+            if(sp[a][i] != 0 && sp[a][i] != sp[b][i])
             {
-                a = sparse[a][i];
-                b = sparse[b][i];
+                a = sp[a][i];
+                b = sp[b][i];
             }
 
-        a = sparse[a][0];
+        a = sp[a][0];
     }
+
+    return a;
 }
